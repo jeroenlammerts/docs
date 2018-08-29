@@ -63,10 +63,18 @@ Plugins that only need to add one section can set a `$hasCpSection` property on 
 namespace ns\prefix;
 
 class Plugin extends \craft\base\Plugin
-{
-    public $hasCpSection = true;
+{   
+    public static $plugin;
+    
+    public function init()
+    {
+        parent::init();
+        self::$plugin = $this;
 
-    // ...
+        $this->hasCpSection = true;
+
+        // ...
+    }
 }
 ```
 
